@@ -1,0 +1,26 @@
+# QUESTION 1
+def pgcd(a,b):
+    if a > b :
+        while b != 0:
+            x=b
+            b=a%b
+            a=x
+        return a
+    else :
+        return pgcd(b,a)
+        
+        
+# QUESTION 2    
+def bezout(a,b):
+    u0, u1, v0, v1 = 1, 0, 0, 1
+    if  abs(a) > abs(b):
+        r0 = a
+        r1 = b
+    else :
+        r0 = b
+        r1 = a
+    while r1 > 0:
+        q = r0 // r1
+        r0, r1 = r1, r0 % r1
+        u0 ,v0, u1, v1,= u1, v1, u0 -q*u1, v0 - q*v1
+    print("Bezout(",a,",",b ,")","#PGCD:",r0,"(u=",u0,")","*",a,"+","(v=",v0,")","*",b,"=",a)
